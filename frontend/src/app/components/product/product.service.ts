@@ -29,7 +29,7 @@ export class ProductService {
     return this.http.get<Product[]>(this.baseUrl);
   }
 
-  reedById(id: string): Observable<Product>{ // This method searches for products by id
+  reedById(id: number): Observable<Product>{ // This method searches for products by id
     const url = `${this.baseUrl}/${id}`
     return this.http.get<Product>(url)
   }
@@ -37,5 +37,10 @@ export class ProductService {
   update(product: Product): Observable<Product>{ // This method changes the product
     const url = `${this.baseUrl}/${product.id}`
     return this.http.put<Product>(url, product)
+  }
+
+  delete(id: number): Observable<Product>{ // This method erases the product
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete<Product>(url);
   }
 }
